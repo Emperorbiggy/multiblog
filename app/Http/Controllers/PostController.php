@@ -50,15 +50,25 @@ public function store(Request $request)
     // Get the authenticated user's tenant
     $tenant = auth()->user()->tenant;
 
-    // Ensure status is lowercase for consistent comparison
+    // Normalize status to lowercase for consistent comparison
     $status = strtolower($validated['status']); // Convert status to lowercase
     \Log::info('Status received:', ['status' => $status]); // Log the status received from the frontend
 
     // Determine if the post is a draft or published based on the normalized status
-    $isDraft = $validated['status'] === 'draft';
-    $isPublished = !$isDraft;
+    $isDraft = $status === 'draft';
+    $isPublished = $status === 'published';
 
-    \Log::info('Post draft or published:', ['isDraft' => $isDraft, 'isPublished' => $isPublished]); // Log the status determination
+    // Set final isDraft and isPublished to 1 or 0
+    $finalIsDraft = $isDraft ? 1 : 0;
+    $finalIsPublished = $isPublished ? 1 : 0;
+
+    \Log::info('Status breakdown:', [
+        'status' => $status,
+        'isDraft' => $isDraft,
+        'isPublished' => $isPublished,
+        'finalIsDraft' => $finalIsDraft,
+        'finalIsPublished' => $finalIsPublished
+    ]);
 
     // Set the destination path for storing images
     $destinationPath = public_path('post/images');
@@ -105,18 +115,18 @@ public function store(Request $request)
         'short_description' => $validated['short_description'] ?? null,
         'thumbnail' => $thumbnailPath,
         'image_urls' => json_encode($imagePaths),
-        'is_draft' => $isDraft,
-        'is_published' => $isPublished,
+        'is_draft' => $finalIsDraft, // Storing as 1 or 0
+        'is_published' => $finalIsPublished, // Storing as 1 or 0
         'is_approved' => false, // Default to false
-        'published_at' => now(), // Set the published date if published
+        'published_at' => $finalIsPublished ? now() : null, // Only set the published date if it's published
     ]);
 
-    // Log post creation for debugging
-    \Log::info('Post created:', ['post' => $post]);
+    
 
     // Return the newly created post in the response
     return response()->json(['post' => $post], 201);
 }
+
 
 
 
