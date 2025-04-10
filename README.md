@@ -1,66 +1,196 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📘 Multi-Tenant Blog System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-11-red.svg?style=flat&logo=laravel)](https://laravel.com)  
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  
+[![Sanctum](https://img.shields.io/badge/API%20Auth-Laravel%20Sanctum-brightgreen)](https://laravel.com/docs/sanctum)
 
-## About Laravel
+A Laravel-based multi-tenant blog platform with both API and web interfaces. Built with Laravel 12.7.2, Blade views, and Sanctum for secure authentication.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Users register and remain in a pending state  
+- Admins approve accounts and assign tenants  
+- Tenants can log in and perform full CRUD on blog posts (Web & API)  
+- Admins can view all posts by all tenants  
+- Sanctum used for secure API authentication  
+- Built following Laravel best practices and SOLID principles
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Framework**: Laravel 12  
+- **Frontend**: Laravel Blade 
+- **API Authentication**: Laravel Sanctum  
+- **Database**: MySQL
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🚀 Getting Started
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Clone the Repository
 
-### Premium Partners
+```bash
+git clone https://github.com/Emperorbiggy/multiblog.git
+cd multiblog
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 2. Install Dependencies
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Environment Setup
 
-## Code of Conduct
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Then update your `.env` file:
 
-## Security Vulnerabilities
+```
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Migrate & Seed Database
 
-## License
+```bash
+php artisan migrate
+php artisan db:seed --class=AdminUserSeeder
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5. Sanctum Setup
+
+```bash
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
+
+
+
+### 6. Serve the Application
+
+```bash
+php artisan serve
+```
+
+Visit: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+---
+
+## 🔐 Sanctum API Authentication
+
+### Login
+
+```http
+POST /api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "password"
+}
+```
+
+
+
+### Public Routes
+
+```http
+POST /api/register
+POST /api/login
+GET  /api/posts
+GET  /api/posts/{id}
+```
+
+### Authenticated Routes (Requires Sanctum Token)
+
+```http
+GET    /api/test                  // Auth check
+GET    /api/posts                 // List own posts
+POST   /api/posts                 // Create post
+PUT    /api/posts/{id}            // Update post
+DELETE /api/posts/{id}            // Delete post
+```
+
+### Admin Routes (Protected by AdminMiddleware)
+
+```http
+GET    /api/admin/users           // List all users
+POST   /api/admin/approve/{id}    // Approve user as tenant
+POST   /api/admin/reject/{id}     // Reject user
+GET    /api/admin/posts           // View all tenant posts
+PUT    /api/admin/posts/{id}/approve  // Approve post
+PUT    /api/admin/posts/{id}/reject   // Reject post
+DELETE /api/posts/delete-all      // Bulk delete posts
+```
+
+Add this to your request headers for protected routes:
+
+```
+Authorization: Bearer YOUR_SANCTUM_TOKEN
+---
+
+## 📂 Full API Route Summary
+
+| Method | Endpoint                          | Access       | Description                     |
+|--------|-----------------------------------|--------------|---------------------------------|
+| POST   | /api/register                     | Public       | Register a new user             |
+| POST   | /api/login                        | Public       | Login and receive token         |
+| GET    | /api/posts                        | Public       | View all posts                  |
+| GET    | /api/posts/{id}                   | Public       | View single post                |
+| GET    | /api/test                         | Authenticated | Check if user is logged in      |
+| POST   | /api/posts                        | Tenant       | Create new post                 |
+| PUT    | /api/posts/{id}                   | Tenant       | Update post                     |
+| DELETE | /api/posts/{id}                   | Tenant       | Delete post                     |
+| GET    | /api/admin/users                  | Admin        | List all registered users       |
+| POST   | /api/admin/approve/{id}           | Admin        | Approve a user as tenant        |
+| POST   | /api/admin/reject/{id}            | Admin        | Reject a user                   |
+| GET    | /api/admin/posts                  | Admin        | View all tenant posts           |
+| PUT    | /api/admin/posts/{id}/approve     | Admin        | Approve tenant post             |
+| PUT    | /api/admin/posts/{id}/reject      | Admin        | Reject tenant post              |
+| DELETE | /api/posts/delete-all             | Admin        | Bulk delete all posts           |
+
+---
+## 🌐 Web Interface
+
+- Tenants can log in and manage blog posts via Blade-based UI  
+- Admins can view pending users and manage tenants via backend (DB or interface)
+
+---
+
+## 📄 Postman Collection
+
+A Postman collection is included for quick testing of API endpoints.
+
+---
+
+## 👤 Default Admin Login
+
+```
+Email: admin@gmail.com
+Password: password
+```
+
+---
+
+## 🧼 Code Quality
+
+- ✅ Follows **SOLID** principles  
+- ✅ Clean folder structure  
+- ✅ Request validations & form requests  
+- ✅ Service-based architecture for business logic  
+
+---
+
+## 📬 Feedback
+
+For issues or contributions, feel free to open an issue or PR. Let’s build better software together!
