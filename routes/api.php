@@ -16,7 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // API Resource for posts (CRUD operations)
     Route::apiResource('posts', PostController::class);
     Route::get('tenant/posts', [PostController::class, 'getTenantPosts']);
-    Route::delete('/posts/delete-all', [PostController::class, 'deleteAllPosts'])->name('posts.deleteAll');
+    
 
     // Admin routes (protected by AdminMiddleware)
     Route::middleware(AdminMiddleware::class)->group(function () {
@@ -26,6 +26,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/admin/posts/{id}/approve', [AdminController::class, 'approvePost']);
         Route::get('/admin/posts', [AdminController::class, 'fetchAllPosts']);
         Route::put('/admin/posts/{id}/reject', [AdminController::class, 'rejectPost']);
+        Route::delete('/posts/delete-all', [AdminController::class, 'deleteAllPosts']);
+
     });
 
     // Test route to check if the user is authenticated

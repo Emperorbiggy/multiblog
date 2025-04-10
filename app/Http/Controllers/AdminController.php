@@ -121,6 +121,25 @@ public function fetchAllPosts(Request $request)
     return response()->json(['posts' => $posts]);
 }
 
+public function deleteAllPosts(Request $request)
+{
+    // Log the authenticated user for debugging
+    \Log::info('Authenticated User:', ['user' => $request->user()]);
 
+    // Ensure the user is an admin
+    $user = $request->user();
+
+    if (!$user) {
+        return response()->json(['message' => 'Unauthorized'], 401);
+    }
+
+    if ($user->role !== 'admin') {
+        return response()->json(['message' => 'Unauthorized'], 403);
+    }
+
+    Post::truncate();
+
+    return response()->json(['message' => 'All posts have been deleted successfully.']);
+}
     
 }

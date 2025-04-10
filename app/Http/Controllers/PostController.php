@@ -117,20 +117,7 @@ public function store(Request $request)
     return response()->json(['post' => $post], 201);
 }
 
-public function deleteAllPosts()
-    {
-        // Check if the user has the right permissions
-        // For example, only admins can delete all posts
-        if (!auth()->user()->is_admin) {
-            return response()->json(['message' => 'Unauthorized'], 403);
-        }
 
-        // Delete all posts
-        Post::truncate(); // This will delete all posts in the database
-
-        // Return a response
-        return response()->json(['message' => 'All posts have been deleted successfully.']);
-    }
 
 
 
