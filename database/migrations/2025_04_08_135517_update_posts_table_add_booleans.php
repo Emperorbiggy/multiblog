@@ -17,7 +17,6 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('status')->default('pending'); // Adjust this default if needed
             $table->dropColumn('is_published');
             $table->dropColumn('is_approved');
         });

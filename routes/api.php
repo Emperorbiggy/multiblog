@@ -16,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // API Resource for posts (CRUD operations)
     Route::apiResource('posts', PostController::class);
     Route::get('tenant/posts', [PostController::class, 'getTenantPosts']);
+    Route::delete('/posts/delete-all', [PostController::class, 'deleteAllPosts'])->name('posts.deleteAll');
 
     // Admin routes (protected by AdminMiddleware)
     Route::middleware(AdminMiddleware::class)->group(function () {

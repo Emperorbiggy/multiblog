@@ -19,6 +19,7 @@ class Post extends Model
         'status',
         'published_at',
         'is_draft',
+        'is_published',
         'is_approved',
         'category',
         'short_description',

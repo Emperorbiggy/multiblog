@@ -50,26 +50,15 @@ public function store(Request $request)
     // Get the authenticated user's tenant
     $tenant = auth()->user()->tenant;
 
-    // Normalize status to lowercase for consistent comparison
+    // Ensure status is lowercase for consistent comparison
     $status = strtolower($validated['status']); // Convert status to lowercase
     \Log::info('Status received:', ['status' => $status]); // Log the status received from the frontend
 
     // Determine if the post is a draft or published based on the normalized status
-    $isDraft = $status === 'draft';
-    $isPublished = $status === 'published';
+    $isDraft = $validated['status'] === 'draft';
+    $isPublished = !$isDraft;
 
-    // Set final isDraft and isPublished to 1 or 0
-    $finalIsDraft = $isDraft ? 1 : 0;
-    $finalIsPublished = $isPublished ? 1 : 0;
-
-    // Log the final status breakdown
-    \Log::info('Status breakdown:', [
-        'status' => $status,
-        'isDraft' => $isDraft,
-        'isPublished' => $isPublished,
-        'finalIsDraft' => $finalIsDraft,
-        'finalIsPublished' => $finalIsPublished
-    ]);
+    \Log::info('Post draft or published:', ['isDraft' => $isDraft, 'isPublished' => $isPublished]); // Log the status determination
 
     // Set the destination path for storing images
     $destinationPath = public_path('post/images');
@@ -116,34 +105,32 @@ public function store(Request $request)
         'short_description' => $validated['short_description'] ?? null,
         'thumbnail' => $thumbnailPath,
         'image_urls' => json_encode($imagePaths),
-        'is_draft' => $finalIsDraft, // Storing as 1 or 0
-        'is_published' => $finalIsPublished, // Storing as 1 or 0
+        'is_draft' => $isDraft,
+        'is_published' => $isPublished,
         'is_approved' => false, // Default to false
-        'published_at' => $finalIsPublished ? now() : null, // Only set the published date if it's published
-    ]);// Create the post in the database
-    $post = Post::create([
-        'tenant_id' => $tenant->id,
-        'author_id' => auth()->id(),
-        'author_name' => auth()->user()->name,
-        'title' => $validated['title'],
-        'content' => $validated['content'],
-        'slug' => Str::slug($validated['title']) . '-' . uniqid(),
-        'category' => $validated['category'] ?? null,
-        'short_description' => $validated['short_description'] ?? null,
-        'thumbnail' => $thumbnailPath,
-        'image_urls' => json_encode($imagePaths),
-        'is_draft' => $finalIsDraft, // Storing as 1 or 0
-        'is_published' => $finalIsPublished, // Storing as 1 or 0
-        'is_approved' => false, // Default to false
-        'published_at' => $finalIsPublished ? now() : null, // Only set the published date if it's published
+        'published_at' => now(), // Set the published date if published
     ]);
 
     
+
     // Return the newly created post in the response
     return response()->json(['post' => $post], 201);
 }
 
+public function deleteAllPosts()
+    {
+        // Check if the user has the right permissions
+        // For example, only admins can delete all posts
+        if (!auth()->user()->is_admin) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
 
+        // Delete all posts
+        Post::truncate(); // This will delete all posts in the database
+
+        // Return a response
+        return response()->json(['message' => 'All posts have been deleted successfully.']);
+    }
 
 
 
