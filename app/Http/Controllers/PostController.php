@@ -62,6 +62,7 @@ public function store(Request $request)
     $finalIsDraft = $isDraft ? 1 : 0;
     $finalIsPublished = $isPublished ? 1 : 0;
 
+    // Log the final status breakdown
     \Log::info('Status breakdown:', [
         'status' => $status,
         'isDraft' => $isDraft,
@@ -122,7 +123,6 @@ public function store(Request $request)
     ]);
 
     
-
     // Return the newly created post in the response
     return response()->json(['post' => $post], 201);
 }
