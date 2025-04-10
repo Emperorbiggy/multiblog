@@ -120,6 +120,22 @@ public function store(Request $request)
         'is_published' => $finalIsPublished, // Storing as 1 or 0
         'is_approved' => false, // Default to false
         'published_at' => $finalIsPublished ? now() : null, // Only set the published date if it's published
+    ]);// Create the post in the database
+    $post = Post::create([
+        'tenant_id' => $tenant->id,
+        'author_id' => auth()->id(),
+        'author_name' => auth()->user()->name,
+        'title' => $validated['title'],
+        'content' => $validated['content'],
+        'slug' => Str::slug($validated['title']) . '-' . uniqid(),
+        'category' => $validated['category'] ?? null,
+        'short_description' => $validated['short_description'] ?? null,
+        'thumbnail' => $thumbnailPath,
+        'image_urls' => json_encode($imagePaths),
+        'is_draft' => $finalIsDraft, // Storing as 1 or 0
+        'is_published' => $finalIsPublished, // Storing as 1 or 0
+        'is_approved' => false, // Default to false
+        'published_at' => $finalIsPublished ? now() : null, // Only set the published date if it's published
     ]);
 
     
