@@ -289,7 +289,7 @@
         <input type="password" name="password" id="password" placeholder="Enter your password" required />
     </div>
     <div class="button mt-30">
-        <button type="submit" class="theme-btn1">Login</button>
+        <button type="submit" class="theme-btn1" id="login-btn">Login</button>
     </div>
     <div id="error-message" class="alert alert-danger" style="display:none;"></div>
 </form>
@@ -325,7 +325,57 @@
 		<script src="assets/js/jquery.lineProgressbar.js"></script>
 		<script src="assets/js/animation.js"></script>
 		<script src="assets/js/main.js"></script>
-		
+		<script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Get form data
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const loginButton = document.getElementById('login-btn'); // Button element
+
+        // Change button text to "Processing..."
+        loginButton.innerText = 'Processing...';
+        loginButton.disabled = true; // Disable the button to prevent multiple submissions
+
+        // Send AJAX request
+        fetch("{{ route('login') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.access_token) {
+                // Successful login
+                localStorage.setItem('access_token', data.access_token);
+                
+                // Check user role and redirect accordingly
+                if (data.user.role === 'admin') {
+                    window.location.href = "/admin"; // Redirect to admin dashboard
+                } else {
+                    window.location.href = "/dashboard"; // Redirect to user dashboard
+                }
+            } else {
+                // Show error message
+                document.getElementById('error-message').innerText = data.message || 'An error occurred';
+                document.getElementById('error-message').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            document.getElementById('error-message').innerText = 'An error occurred. Please try again later.';
+            document.getElementById('error-message').style.display = 'block';
+        })
+        .finally(() => {
+            // Revert the button back to "Login" after processing
+            loginButton.innerText = 'Login';
+            loginButton.disabled = false; // Enable the button again
+        });
+    });
+</script>
 
 
 	</body>
