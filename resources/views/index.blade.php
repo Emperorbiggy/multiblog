@@ -109,77 +109,32 @@
                         <div class="main-menu-ex main-menu-ex1">
                             <ul>
                                 <li>
-                                    <a href="#">Home <i class="fa-solid fa-angle-down"></i></a>
-                                    <div class="tp-submenu">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="all-images-menu">
-                                                    @for ($i = 1; $i <= 4; $i++)
-                                                        <div class="homemenu-thumb" style="{{ $i === 4 ? 'margin: 0' : '' }}">
-                                                            <div class="img1">
-                                                                <img src="{{ asset("assets/img/demo/demo$i.jpg") }}" alt="9janub" />
-                                                            </div>
-                                                            <div class="homemenu-btn">
-                                                                <a class="header-btn1" href="{{ url("index$i.html") }}">View Page <i class="fa-solid fa-arrow-right"></i></a>
-                                                            </div>
-                                                            <a class="text" href="{{ url("index$i.html") }}">Modern Blog 0{{ $i }}</a>
-                                                        </div>
-                                                    @endfor
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a href="#">Home </a>
+
                                 </li>
 
                                 <li class="dropdown-menu-parrent">
-                                    <a href="#" class="main1">Blog <i class="fa-solid fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="{{ url('blog.html') }}">Blog Format 1</a></li>
-                                        <li><a href="{{ url('blog2.html') }}">Blog Format 2</a></li>
-                                        <li><a href="{{ url('blog3.html') }}">Blog Format 3</a></li>
-                                    </ul>
+                                    <a href="#" class="main1">News</a>
+                                
                                 </li>
 
                                 <li class="dropdown-menu-parrent">
-                                    <a href="#" class="main1">Single Posts <i class="fa-solid fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="{{ url('blog-details1.html') }}">Standard Format</a></li>
-                                        <li><a href="{{ url('blog-details2.html') }}">Split Format</a></li>
-                                        <li><a href="{{ url('blog-details3.html') }}">Overlay Format</a></li>
-                                        <li><a href="{{ url('blog-details-sidebar-left.html') }}">Sidebar Left</a></li>
-                                        <li><a href="{{ url('blog-details-sidebar-right.html') }}">Sidebar Right</a></li>
-                                        <li><a href="{{ url('blog-single.html') }}">Single Post</a></li>
-                                    </ul>
+                                    <a href="#" class="main1">Sport</a>
+                                    
                                 </li>
 
                                 <li class="dropdown-menu-parrent">
-                                    <a href="#" class="main1">Categories <i class="fa-solid fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="{{ url('categories.html') }}">Categories 01</a></li>
-                                        <li><a href="{{ url('categories2.html') }}">Categories 02</a></li>
-                                    </ul>
+                                    <a href="#" class="main1">Categories </a>
+                                    
                                 </li>
 
                                 <li class="dropdown-menu-parrent">
-                                    <a href="#" class="main1">Pages <i class="fa-solid fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="{{ url('author.html') }}">Author</a></li>
-                                        <li><a href="{{ url('search.html') }}">Search Result</a></li>
-                                        <li><a href="{{ url('contact.html') }}">Contact Us</a></li>
-                                        <li><a href="{{ url('social-media.html') }}">Social Media</a></li>
-                                        <li><a href="{{ url('404.html') }}">404</a></li>
-                                    </ul>
+                                    <a href="#" class="main1">Politics </a>
+                                    
                                 </li>
 
                                 <li class="dropdown-menu-parrent">
-                                    <a href="#" class="main1">Account <i class="fa-solid fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="{{ url('login.html') }}">Login</a></li>
-                                        <li><a href="{{ url('sigup.html') }}">Sign Up</a></li>
-                                        <li><a href="{{ url('forgot.html') }}">Forgot</a></li>
-                                        <li><a href="{{ url('reset.html') }}">Reset Password</a></li>
-                                        <li><a href="{{ url('verify.html') }}">Verify</a></li>
-                                    </ul>
+                                    <a href="#" class="main1">Contact Us </a>
                                 </li>
                             </ul>
                         </div>
@@ -188,7 +143,7 @@
                             <div class="vl-search-top">
                                 <button class="search-open-btn"><i class="fa-regular fa-magnifying-glass"></i></button>
                             </div>
-                            <a class="theme-btn1" href="{{ url('sigup.html') }}">Subscribe </a>
+                            <a class="theme-btn1" href="{{ url('/signup') }}">Register </a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +159,7 @@
         <div class="col-12">
             <div class="mobile-header-elements">
                 <div class="mobile-logo">
-                    <a href="{{ url('index1.html') }}">
+                    <a href="{{ url('/') }}">
                         <img src="{{ asset('assets/img/logo/header-logo1.png') }}" alt="9janub" />
                     </a>
                 </div>
@@ -219,7 +174,7 @@
 
 <div class="mobile-sidebar d-block d-lg-none">
 	<div class="logo-m">
-		<a href="{{ url('index.html') }}"><img src="{{ asset('assets/img/logo/header-logo1.png') }}" alt="9janub" /></a>
+		<a href="{{ url('/') }}"><img src="{{ asset('assets/img/logo/header-logo1.png') }}" alt="9janub" /></a>
 	</div>
 	<div class="menu-close">
 		<i class="fa-solid fa-xmark"></i>
@@ -228,53 +183,29 @@
 		<ul>
 			<li class="has-dropdown">
 				<a href="#">Home </a>
-				<ul class="sub-menu">
-					<li><a href="{{ url('index.html') }}">Home 1</a></li>
-					<li><a href="{{ url('index2.html') }}">Home 2</a></li>
-					<li><a href="{{ url('index3.html') }}">Home 3</a></li>
-					<li><a href="{{ url('index4.html') }}">Home 4</a></li>
-				</ul>
 			</li>
 			<li class="has-dropdown">
 				<a href="#">Blog</a>
-				<ul class="sub-menu">
-					<li><a href="{{ url('blog.html') }}">Blog 01</a></li>
-					<li><a href="{{ url('blog2.html') }}">Blog 02</a></li>
-					<li><a href="{{ url('blog3.html') }}">Blog 03</a></li>
-				</ul>
 			</li>
 			<li class="has-dropdown">
 				<a href="#">Single Posts</a>
-				<ul class="sub-menu">
-					<li><a href="{{ url('blog-details1.html') }}">Standard Format</a></li>
-					<li><a href="{{ url('blog-details2.html') }}">Split Format</a></li>
-					<li><a href="{{ url('blog-details3.html') }}">Overlay Format</a></li>
-					<li><a href="{{ url('blog-details-sidebar-left.html') }}">Sidebar Left</a></li>
-					<li><a href="{{ url('blog-details-sidebar-right.html') }}">Sidebar Right</a></li>
-					<li><a href="{{ url('blog-single.html') }}">Single Post</a></li>
-				</ul>
+				
 			</li>
 
 			<li class="has-dropdown">
 				<a href="#">Pages</a>
-				<ul class="sub-menu">
-					<li><a href="{{ url('author.html') }}">Author</a></li>
-					<li><a href="{{ url('search.html') }}">Search Result</a></li>
-					<li><a href="{{ url('contact.html') }}">Contact Us</a></li>
-					<li><a href="{{ url('social-media.html') }}">Social Media</a></li>
-					<li><a href="{{ url('404.html') }}">404</a></li>
-				</ul>
+
 			</li>
 
 			<li class="has-dropdown has-dropdown1">
 				<a href="#" class="main">Account</a>
 				
 			</li>
-			<li><a href="{{ url('contact.html') }}">Contact Us</a></li>
+			<li><a href="{{ url('#') }}">Contact Us</a></li>
 		</ul>
 
 		<div class="mobile-button">
-			<a class="theme-btn1" href="{{ url('contact.html') }}">Get A Quote <i class="fa-solid fa-arrow-right"></i></a>
+			<a class="theme-btn1" href="{{ url('#') }}">Get A Quote <i class="fa-solid fa-arrow-right"></i></a>
 		</div>
 
 		<div class="footer-contact-area1 md:pl-0 pl-20 sm:pl-0 mt-30">
@@ -362,275 +293,7 @@
 					<div class="col-lg-8">
 						<div class="blog1-posts-area">
 							<div class="row">
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="0">
-									<div class="blog1-single-box">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image1.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Social Media</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">The Art of Building a Strong Personal Brand on Social Media</a></h4>
-											<p class="mt-16">This post explores strategies to help create an authentic and memorable brand presence on social media that resonates with audience.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author1.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Kimberly Mastrangelo</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 26, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="100">
-									<div class="blog1-single-box sm:mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image2.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Social Media</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">Proven Strategies to Boost Your Social Media Metrics</a></h4>
-											<p class="mt-16">Engagement is key to building a loyal following. Learn techniques for crafting posts that invite interaction, encouraging shares.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author2.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Kathy Pacheco</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 21, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="0">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image3.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Brand’s</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">The Power of Storytelling: How to Make Your Brand’s Voice Stand Out</a></h4>
-											<p class="mt-16">Discover ways to create relatable and impactful stories that reinforce your brand and keep followers coming back.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author3.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Corina McCoy</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Nov 2, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="100">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image4.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Content</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">Mastering Content Calendars: A Guide to Consistent and Strategic.</a></h4>
-											<p class="mt-16">Consistency is crucial for success on social media. This guide helps you create an effective content calendar to stay organized.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author4.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Rodger Struck</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Nov 6, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="0">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image5.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Trending</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">Social Media Trends for 2024: What to Watch and How to Adapt </a></h4>
-											<p class="mt-16">The social media landscape evolves quickly. Stay ahead of the curve by understanding key trends for 2024,</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author5.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Rhonda Rhodes</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Nov 6, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="100">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image6.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Brand Consistency</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">Creating a Visual Identity: Tips for Aesthetic and Brand Consistency </a></h4>
-											<p class="mt-16">This post covers tips on color schemes, fonts, and visuals to keep your profile visually appealing and cohesive.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author5.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Katie Sims</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Nov 6, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="0">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image7.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Gen - Z</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">How to Build Authentic Connections with the New Generation</a></h4>
-											<p class="mt-16">Gen Z is reshaping digital interaction. Learn what matters to this generation and how to create authentic, meaningful content.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author5.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">David Elson</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 26, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="100">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image8.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Social Media</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">Harnessing Analytics: Using Data to Refine Your Social Media Strategy</a></h4>
-											<p class="mt-16">Gen Z is reshaping digital interaction. Learn what matters to this generation and how to create authentic, meaningful content.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author5.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Kenneth Allen</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 26, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="0">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image9.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Social Media</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">From Follower to Customer: Turning Social Engagement into Sales</a></h4>
-											<p class="mt-16">Transforming followers into customers requires a solid strategy. This post offers insights on using social media as a powerful tool convert.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author2.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Judith Rodriguez</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 26, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="100">
-									<div class="blog1-single-box mt-30">
-										<div class="thumbnail image-anime">
-											<img src="assets/img/blog/blog1-image10.png" alt="9janub" />
-										</div>
-										<div class="heading1">
-											<div class="social-area">
-												<a href="social-media.html" class="social">Feedback</a>
-												<a href="categories.html" class="time"><img src="assets/img/icons/time1.svg" alt="9janub" /> 3 min read</a>
-											</div>
-											<h4><a href="blog-single.html">Handling Negative Feedback: Maintaining Brand Reputation.</a></h4>
-											<p class="mt-16">Dealing with criticism on social media can be challenging. Learn ways to manage negative feedback professionally to protect your brand.</p>
-											<div class="author-area">
-												<div class="author">
-													<div class="author-tumb">
-														<img src="assets/img/blog/blog1-author6.png" alt="9janub" />
-													</div>
-													<a href="author.html" class="author-text">Iva Ryan</a>
-												</div>
-												<div class="date">
-													<a href="#"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 26, 2024 </a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 
 							<div class="space60"></div>
@@ -702,7 +365,7 @@
 									</div>
 									<div class="heading">
 										<a href="#" class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 13, 2024</a>
-										<h5><a href="blog-single.html">The Power of Storytelling: How Make Your Brand’s Voice...</a></h5>
+										<h5><a href="#">The Power of Storytelling: How Make Your Brand’s Voice...</a></h5>
 									</div>
 								</div>
 
@@ -714,7 +377,7 @@
 									</div>
 									<div class="heading">
 										<a href="#" class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 12, 2024</a>
-										<h5><a href="blog-single.html">Mastering Content Calendars: A Guide to Consistent Strat...</a></h5>
+										<h5><a href="#">Mastering Content Calendars: A Guide to Consistent Strat...</a></h5>
 									</div>
 								</div>
 
@@ -726,7 +389,7 @@
 									</div>
 									<div class="heading">
 										<a href="#" class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 21, 2024</a>
-										<h5><a href="blog-single.html">Social Media Trends for 2024: What to Watch and How to...</a></h5>
+										<h5><a href="#">Social Media Trends for 2024: What to Watch and How to...</a></h5>
 									</div>
 								</div>
 
@@ -738,7 +401,7 @@
 									</div>
 									<div class="heading">
 										<a href="#" class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 19, 2024 </a>
-										<h5><a href="blog-single.html">Creating a Visual Identity: Tips for Aesthetic & Brand Consi...</a></h5>
+										<h5><a href="#">Creating a Visual Identity: Tips for Aesthetic & Brand Consi...</a></h5>
 									</div>
 								</div>
 							</div>
@@ -758,7 +421,7 @@
 											</div>
 											<span class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 21, 2024</span>
 										</div>
-										<h4><a href="blog-single.html">Handling Negative Feedback: Maintaining Brand Reputation on Social Media</a></h4>
+										<h4><a href="#">Handling Negative Feedback: Maintaining Brand Reputation on Social Media</a></h4>
 									</div>
 								</div>
 
@@ -777,7 +440,7 @@
 											</div>
 											<span class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 21, 2024</span>
 										</div>
-										<h4><a href="blog-single.html">Handling Negative Feedback: Maintaining Brand Reputation on Social Media</a></h4>
+										<h4><a href="#">Handling Negative Feedback: Maintaining Brand Reputation on Social Media</a></h4>
 									</div>
 								</div>
 
@@ -796,7 +459,7 @@
 											</div>
 											<span class="date"><img src="assets/img/icons/date1.svg" alt="9janub" /> Oct 21, 2024</span>
 										</div>
-										<h4><a href="blog-single.html">Handling Negative Feedback: Maintaining Brand Reputation on Social Media</a></h4>
+										<h4><a href="#">Handling Negative Feedback: Maintaining Brand Reputation on Social Media</a></h4>
 									</div>
 								</div>
 							</div>
@@ -906,7 +569,7 @@
 					</div>
 					<div class="col-lg-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="350">
 						<div class="text-end md:text-start sm:text-start sm:mt-20 md:mt-20">
-							<a class="theme-btn1" href="categories.html">Explore All Topic </a>
+							<a class="theme-btn1" href="#">Explore All Topic </a>
 						</div>
 					</div>
 				</div>
@@ -918,7 +581,7 @@
 								<img src="assets/img/blog/blog1-cetegroy-post1.png" alt="9janub" />
 							</div>
 							<div class="heading1 mt-16">
-								<h4><a href="social-media.html">Social Media </a></h4>
+								<h4><a href="#">Social Media </a></h4>
 							</div>
 						</div>
 					</div>
@@ -929,7 +592,7 @@
 								<img src="assets/img/blog/blog1-cetegroy-post2.png" alt="9janub" />
 							</div>
 							<div class="heading1 mt-16">
-								<h4><a href="social-media.html">Digital Marketing </a></h4>
+								<h4><a href="#">Digital Marketing </a></h4>
 							</div>
 						</div>
 					</div>
@@ -940,7 +603,7 @@
 								<img src="assets/img/blog/blog1-cetegroy-post3.png" alt="9janub" />
 							</div>
 							<div class="heading1 mt-16">
-								<h4><a href="social-media.html">Startup Agency </a></h4>
+								<h4><a href="#">Startup Agency </a></h4>
 							</div>
 						</div>
 					</div>
@@ -951,7 +614,7 @@
 								<img src="assets/img/blog/blog1-cetegroy-post4.png" alt="9janub" />
 							</div>
 							<div class="heading1 mt-16">
-								<h4><a href="social-media.html">Design & Development </a></h4>
+								<h4><a href="#">Design & Development </a></h4>
 							</div>
 						</div>
 					</div>
@@ -962,7 +625,7 @@
 								<img src="assets/img/blog/blog1-cetegroy-post5.png" alt="9janub" />
 							</div>
 							<div class="heading1 mt-16">
-								<h4><a href="social-media.html">Life style </a></h4>
+								<h4><a href="#">Life style </a></h4>
 							</div>
 						</div>
 					</div>
@@ -1139,5 +802,109 @@
 		<script src="assets/js/jquery.lineProgressbar.js"></script>
 		<script src="assets/js/animation.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+   const baseUrl = "{{ url('/') }}";  // Dynamically gets the base URL of your app
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Fetch all posts for the main section
+    fetch("api/posts/published")
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === 'success') {
+                const posts = res.data;
+                const container = document.querySelector(".blog1-posts-area .row");
+                container.innerHTML = ''; // Clear existing hardcoded ones
+
+                posts.forEach((post, index) => {
+                    const thumbnailUrl = baseUrl + '/' + post.thumbnail;
+
+                    const shortDescription = post.short_description.length > 150
+                        ? post.short_description.substring(0, 150) + "..."
+                        : post.short_description;
+
+                    container.innerHTML += `
+                        <div class="col-md-6" data-aos="fade-up" data-aos-offset="50" data-aos-duration="400" data-aos-delay="${index * 100}">
+                            <div class="blog1-single-box mt-30">
+                                <div class="thumbnail image-anime">
+                                    <img src="${thumbnailUrl || 'assets/img/blog/default.png'}" alt="${post.title}" />
+                                </div>
+                                <div class="heading1">
+                                    <div class="social-area">
+                                        <a href="#" class="social">${post.category || 'General'}</a>
+                                        <a href="#" class="time"><img src="assets/img/icons/time1.svg" alt="time" /> 3 min read</a>
+                                    </div>
+                                    <h4><a href="/blog/${post.slug}">${post.title}</a></h4>
+                                    <p class="mt-16">${shortDescription}</p>
+                                    <div class="author-area">
+                                        <div class="author">
+                                            <div class="author-tumb">
+                                                <img src="${post.author_image || 'assets/img/blog/blog1-author1.png'}" alt="author" />
+                                            </div>
+                                            <a href="#" class="author-text">${post.author_name}</a>
+                                        </div>
+                                        <div class="date">
+                                            <a href="#"><img src="assets/img/icons/date1.svg" alt="date" /> ${new Date(post.published_at).toDateString()}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                console.error("Error loading posts");
+            }
+        })
+        .catch(error => console.error("API Error:", error));
+
+    // Fetch and display recent posts in the sidebar
+    fetch("api/posts/published")
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === 'success') {
+                const posts = res.data;
+                const recentPostsContainer = document.querySelector(".sidebar-widget_1._recent-posts");
+
+                // Sort posts by published date in descending order
+                posts.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+                // Clear any existing posts
+                recentPostsContainer.innerHTML = '';
+
+                // Limit to the top 4 recent posts
+                const recentPosts = posts.slice(0, 4);
+
+                recentPosts.forEach(post => {
+                    const thumbnailUrl = baseUrl + '/' + post.thumbnail;
+                    const shortDescription = post.short_description.length > 150
+                        ? post.short_description.substring(0, 150) + "..."
+                        : post.short_description;
+
+                    recentPostsContainer.innerHTML += `
+                        <div class="blog1-recent-box mt-16">
+                            <div class="">
+                                <div class="recent-thumb">
+                                    <img src="${thumbnailUrl || 'assets/img/blog/default.png'}" alt="${post.title}" />
+                                </div>
+                            </div>
+                            <div class="heading">
+                                <a href="#" class="date">
+                                    <img src="assets/img/icons/date1.svg" alt="date" /> ${new Date(post.published_at).toDateString()}
+                                </a>
+                                <h5><a href="/blog/${post.slug}">${post.title}</a></h5>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                console.error("Error loading recent posts");
+            }
+        })
+        .catch(error => console.error("API Error:", error));
+});
+
+</script>
+
+
 	</body>
 </html>

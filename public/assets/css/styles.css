@@ -1,0 +1,146 @@
+:root {
+    --primary-color: #4B1AB3;
+    --sidebar-bg: #4B1AB3;
+    --sidebar-text: #fff;
+    --hover-bg: #3a0e8c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    background-color: #f4f4f9;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    transition: transform 0.3s ease-in-out;
+    flex-shrink: 0;
+}
+
+.sidebar-logo {
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.sidebar-menu li {
+    padding: 10px 20px;
+}
+
+.sidebar-menu li a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.sidebar-menu li a:hover {
+    background-color: var(--hover-bg);
+    border-radius: 6px;
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 30px;
+    display: none;
+}
+
+.has-submenu.open .submenu {
+    display: block;
+}
+
+.caret {
+    margin-left: auto;
+    font-size: 0.8rem;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Navbar */
+.top-nav {
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-info img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+}
+
+/* Content Area */
+.content-area {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        height: 100%;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}

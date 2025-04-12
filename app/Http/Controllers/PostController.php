@@ -147,6 +147,16 @@ public function store(Request $request)
     // Return the posts as JSON
     return response()->json(['posts' => $posts]);
 }
+public function fetchAllPublishedPosts()
+{
+    $posts = Post::where('is_approved', true)->get();
+
+    return response()->json([
+        'status' => 'success',
+        'data' => $posts
+    ]);
+}
+
 
 
     // Update a post

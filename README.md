@@ -96,7 +96,7 @@ Accept: application/json
 
 {
   "email": "admin@gmail.com",
-  "password": "password"
+  "password": "admin123456"
 }
 ```
 
@@ -177,7 +177,7 @@ A Postman collection is included for quick testing of API endpoints.
 
 ```
 Email: admin@gmail.com
-Password: password
+Password: admin123456
 ```
 
 ---
